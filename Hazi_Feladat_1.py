@@ -1,4 +1,7 @@
 import math as mt
+import cmath as cmt
+from datetime import date
+
 def feladat_1(a,b):
     a=a+b
     b=a-b
@@ -81,6 +84,77 @@ def feladat_8():
         y=4
     print("Az E függvény eredménye: ", y)
 
+def feladat_9(a,b,c):
+    a= input("Kérem a másodfokú tagot: ")
+    a = float(a)
+    while a == 0:
+        print("Ez nem lesz másodfokú egyenlet; nem oldom meg.")
+        a = input("Kérem a másodfokú tagot: '")
+        a = float(a)
+
+    b = input("Kérem az elsőfokú tagot: ")
+    c = input("Kérem a konstans tagot: ")
+    b = float(b)
+    c = float(c)
+
+    d = b * b - 4 * a * c
+
+    if d >= 0:
+        print("Van valós megoldás.")
+        x1 = (-b - mt.sqrt(d)) / (2 * a)
+        x2 = (-b + mt.sqrt(d)) / (2 * a)
+        print("Az egyik megoldás", x1)
+        print("A másik megoldás", x2)
+    else:
+        print("Nincs valós megoldás.")
+        x1 = (-b - cmt.sqrt(d)) / (2 * a)
+        x2 = (-b + cmt.sqrt(d)) / (2 * a)
+        print("Az egyik megoldás", x1)
+        print("A másik megoldás", x2)
+
+def feladat_10(a,b):
+    x=0
+    for i in range(a,b+1):
+        if i%4==0 and i%100!=0 or i%400==0:
+            x+=1
+    print(x)
+
+def feladat_11():
+    a=date(input("Mikor születtél? "))
+    most=date.today()
+    x=most-a
+    print(x)
+
+def feladat_12(adottpont,maxpont):
+    if adottpont>maxpont*0.6:
+        print("Sikeres vizsga!")
+    else:
+        print("Bukás!")
+
+def feladat_13():
+    a=int(input("Jegyed?"))
+    if a==5:
+        print("Jeles!")
+    elif a==4:
+        print("Jó!")
+    elif a==3:
+        print("Közepes!")
+    elif a==2:
+        print("Eléséges!")
+    elif a==1:
+        print("Elégtelen")
+    else:
+        print("Nincs ilyen érdemjegy!")
+
+def feladat_14():
+    a=int(input("Hanyadik hónapot keresed? "))
+    honapok=["Január","Február","Március","Április","Május","Június","Július","Augusztus","Szeptember","Október","November","December"]
+    for i in range(12):
+        if i==a:
+            print(honapok[i-1])
+
+
+    
 
 def main():
     #feladat_1(20,-9)
@@ -90,6 +164,13 @@ def main():
     #feladat_5(12,23,33,-1)
     #feladat_6(5,3,6)
     #feladat_7(12,23,100)
-    feladat_8()
+    #feladat_8()
+    #feladat_9(1,2,4)
+    #feladat_10(1010,2018)
+    #feladat_11(???)
+    #feladat_12(61,100)
+    #feladat_13()
+    #feladat_14()
+    
 
 main()
