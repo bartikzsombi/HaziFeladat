@@ -153,8 +153,30 @@ def feladat_14():
         if i==a:
             print(honapok[i-1])
 
+def feladat_15(a,b):
+    hanyados=0
+    while a>=b:
+        hanyados+=1
+        a=a-b
+    print (hanyados)
 
-    
+def feladat_16(a,b):
+    while True:
+        r=a%b
+        a=b
+        b=r
+        if r==0:
+            break
+    print(a)
+
+def feladat_17(n):
+    masolat = n
+    uj_szam = 0
+    while n != 0:
+        szj = n % 10
+        uj_szam = uj_szam * 10 + szj
+        n = n // 10
+    return(uj_szam==masolat)
 
 def main():
     #feladat_1(20,-9)
@@ -171,6 +193,8 @@ def main():
     #feladat_12(61,100)
     #feladat_13()
     #feladat_14()
-    
+    #feladat_15(200,2)
+    #feladat_16(350,40)
+    #print(feladat_17(11211))
 
 main()
