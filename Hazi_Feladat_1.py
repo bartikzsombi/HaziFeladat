@@ -178,6 +178,14 @@ def feladat_17(n):
         n = n // 10
     return(uj_szam==masolat)
 
+def feladat_18():
+    x=int(input("Szám x: "))
+    y=int(input("Szám y: "))
+    p=0
+    while x>0:
+        if x%2==1:
+            p=p+y
+
 def main():
     #feladat_1(20,-9)
     #feladat_2()
@@ -196,5 +204,5 @@ def main():
     #feladat_15(200,2)
     #feladat_16(350,40)
     #print(feladat_17(11211))
-
+    feladat_18()
 main()
