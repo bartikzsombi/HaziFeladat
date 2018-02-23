@@ -1,2 +1,3 @@
 # HaziFeladat
-Gyakorol
+Bartik Zsombor
+VMI21R
