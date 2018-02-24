@@ -413,6 +413,49 @@ def feladat_33(n):
             c=i
     print(c," a legtöbb osztóval rendelkező szám.")
 
+def feladat_34(x):
+    for i in range(x,6,-1):
+        if i%2==0:
+            for a in range(1,i+1):
+                if feladat_19(a):
+                    for b in range(1,i+1):
+                        if feladat_19(b):
+                            if a+b==i:
+                                if a<=b:
+                                    print (i,"=",a,"+",b)
+                                    return
+
+def feladat_35(x):
+    for a in range(1,x+1):
+        if feladat_19(a):
+            for b in range(1,x+1):
+                if feladat_19(b):
+                    if abs(a-b)==2:
+                        if a<=b:
+                            print ("(",a,",",b,")")
+
+def feladat_36(n):
+    x=0
+    a = 1
+    b = 1
+    if n == 1:
+        x=1
+        print(x)
+    elif n == 2:
+        x=2
+        print(x)
+    else:
+        c = a + b
+        x=2
+        k = 3
+        while c < n:
+
+            a = b
+            b = c
+            c = a + b
+            x+=1
+            k += 1
+        print(x)
 
 
 
@@ -450,7 +493,8 @@ def main():
     #feladat_31(100)
     #feladat_32(7)
     #feladat_33(19)
-
-
+    #feladat_34(100)
+    #feladat_35(100)
+    feladat_36(10)
 
 main()
