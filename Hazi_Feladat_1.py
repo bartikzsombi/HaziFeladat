@@ -1,6 +1,6 @@
 import math as mt
 import cmath as cmt
-from datetime import date
+import numpy as np
 
 def feladat_1(a,b):
     a=a+b
@@ -120,10 +120,37 @@ def feladat_10(a,b):
     print(x)
 
 def feladat_11():
-    a=date(input("Mikor születtél? "))
-    most=date.today()
-    x=most-a
-    print(x)
+    a=input("Mikor születtél? ")
+    most=input("Hanyadika van ma? ")
+    q=a.split(".")
+    w=most.split(".")
+    x=0
+    for i in range(int(q[0]),int(w[0])+1):
+        if i % 4 == 0 and i % 100 != 0 or i % 400 == 0:
+            napok = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            for i in range(len(napok)):
+                x += napok[i]
+        else:
+            napok=[31,28,31,30,31,30,31,31,30,31,30,31]
+            for i in range(len(napok)):
+                x += napok[i]
+    sz=int(q[2])
+    for j in range(int(q[1])-1):
+        if int(q[0]) % 4 == 0 and int(q[0]) % 100 != 0 or int(q[0]) % 400 == 0:
+            napok = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            sz += napok[j]
+        else:
+            napok = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            sz += napok[j]
+    mo=int(w[2])*-1
+    for k in range(int(w[1])-1,12):
+        if int(w[0]) % 4 == 0 and int(w[0]) % 100 != 0 or int(w[0]) % 400 == 0:
+            napok = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            mo += napok[k]
+        else:
+            napok = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            mo += napok[k]
+    print(x-sz-mo," Napot éltem már.")
 
 def feladat_12(adottpont,maxpont):
     if adottpont>maxpont*0.6:
@@ -280,7 +307,16 @@ def feladat_24():
     print("Héttel osztva maradékul ötöt ad: {} szám, Tizenhárommal osztva maradékul hetet ad: {} szám".format(het,tihá))
 
 def feladat_25():
-    
+    lakos=int(input("Lakosok száma: "))
+    terulet=int(input("Ország területe: "))
+    print(lakos/terulet," fő/km2 az ország népsűrűsége.")
+    if lakos/terulet<50:
+        print("Az ország ritkán lakott.")
+    elif lakos/terulet>=50 and lakos/terulet<300:
+        print(" Átlagos népsűrűségű ország.")
+    else:
+        print(" Sűrűn lakott ország.")
+
 
 
 def main():
@@ -293,8 +329,8 @@ def main():
     #feladat_7(12,23,100)
     #feladat_8()
     #feladat_9(1,2,4)
-    #feladat_10(1010,2018)
-    #feladat_11(???)
+    #feladat_10(1996,2018)
+    feladat_11()
     #feladat_12(61,100)
     #feladat_13()
     #feladat_14()
@@ -308,6 +344,6 @@ def main():
     #feladat_22(2,10)
     #feladat_23(10000)
     #feladat_24()
-    feladat_25()
+    #feladat_25()
 
 main()
