@@ -457,7 +457,43 @@ def feladat_36(n):
             k += 1
         print(x)
 
+def feladat_37(n):
+    a = 1
+    b = 1
+    c = 0
+    k = 1
+    while c < n+1:
+            a = b
+            b = c
+            c = a + b
+            #print(c)
+            k += 1
+    print (c)
 
+def feladat_38():
+    x=input(" irj egy legfeljebb 9 jegyű számot: ")
+    y=input(" Csak egy 1 jegyű számod adj: ")
+    db=0
+    lst=[]
+    for i in range(len(x)):
+        lst.append(x[i])
+    for i in lst:
+        if i==y:
+            db+=1
+    print (db)
+
+def feladat_39():
+    for i in range(1000,1,-1):
+        lst = []
+        osszeg = 0
+        i=str(i)
+        for j in range(len(i)):
+            lst.append(i[j])
+        for k in range(len(lst)):
+            osszeg=osszeg+int(lst[k])*int(lst[k])*int(lst[k])
+        if int(i)==osszeg:
+            print(i)
+        
 
 def main():
     #feladat_1(20,-9)
@@ -495,6 +531,8 @@ def main():
     #feladat_33(19)
     #feladat_34(100)
     #feladat_35(100)
-    feladat_36(10)
-
+    #feladat_36(10)
+    #feladat_37(6)
+    #feladat_38()
+    feladat_39()
 main()
