@@ -197,8 +197,90 @@ def feladat_18():
 
     print(szorzat)
 
+def feladat_19(n):
+    prim = True
+    if n == 1:
+        prim = False
+    for i in range(2, int(mt.sqrt(n)) + 1):
+        if n % i == 0:
+            prim = False
+            break
+    return prim
 
+def feladat_20(n):
+    a = 1
+    b = 1
+    if n == 1:
+        print(a)
+    elif n == 2:
+        print(a, b)
+    else:
+        c = a + b
+        print(a, b, c, end=" ")
+        k = 3
+        while k < n:
+            a = b
+            b = c
+            c = a + b
+            print(c, end=" ")
+            k += 1
 
+def feladat_21(n):
+    masolat = n
+    uj_szam = 0
+    while n != 0:
+        szj = n % 10
+        uj_szam = uj_szam * 10 + szj
+        n = n // 10
+    print(uj_szam)
+
+def feladat_22(x,n):
+
+    eredmeny=1
+    while n>0:
+        if n%2==1:
+            eredmeny=eredmeny*x
+            n=n-1
+        else:
+            x=x*x
+            n=n/2
+    print( eredmeny)
+    '''vagy így:
+    alap=x
+    for i in range(n-1):
+        x=x*alap
+    print (x)'''
+
+def feladat_23(n):
+
+    for i in range(1,n+1):
+        a=[]
+        for j in range(i):
+            if j==0:
+                continue
+            if i%j==0:
+                a.append(j)
+        c=0
+        for o in range(len(a)):
+            c+=a[o]
+        if i==c:
+            print(i)
+            print(a)
+
+def feladat_24():
+    x=1
+    het=0
+    tihá=0
+    while x!=0:
+        x=int(input("Szám: "))
+        if x%7==5:
+            het+=1
+        if x%13==7:
+            tihá+=1
+    print("Héttel osztva maradékul ötöt ad: {} szám, Tizenhárommal osztva maradékul hetet ad: {} szám".format(het,tihá))
+
+def feladat_25():
+    
 
 
 def main():
@@ -220,4 +302,12 @@ def main():
     #feladat_16(350,40)
     #print(feladat_17(11211))
     #feladat_18()
+    #print(feladat_19(13))
+    #feladat_20(10)
+    #feladat_21(2333212)
+    #feladat_22(2,10)
+    #feladat_23(10000)
+    #feladat_24()
+    feladat_25()
+
 main()
