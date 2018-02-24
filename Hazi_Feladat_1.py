@@ -1,6 +1,5 @@
 import math as mt
 import cmath as cmt
-import numpy as np
 
 def feladat_1(a,b):
     a=a+b
@@ -259,7 +258,10 @@ def feladat_21(n):
         szj = n % 10
         uj_szam = uj_szam * 10 + szj
         n = n // 10
-    print(uj_szam)
+    if len(str(masolat))>9:
+        print("Túl hosszú a szám.")
+    else:
+        print(uj_szam)
 
 def feladat_22(x,n):
 
@@ -317,6 +319,101 @@ def feladat_25():
     else:
         print(" Sűrűn lakott ország.")
 
+def feladat_26():
+    x=int(input(" Adj meg egy számot: "))
+    pozitív=0
+    negatív=0
+    if x<0:
+        negatív+=1
+    else:
+        pozitív+=1
+    összeg=x
+    while összeg!=0:
+        x=int(input("Add meg a következő számot: "))
+        if x < 0:
+            negatív += 1
+        else:
+            pozitív += 1
+        összeg += x
+        print(összeg," Eddig a kapott számok összege.")
+    print("Negatív számok: {}, Pozitív számok: {}".format(negatív,pozitív))
+
+def feladat_27():
+    x=int(input("Adj meg egy számot: "))
+    n=0
+    p=0
+    while True:
+        if x<0:
+            n += 1
+            x = int(input("Adj még számot: "))
+            if x<0:
+                n += 1
+                break
+        else:
+            p += 1
+            x = int(input("Adj még számot: "))
+            if x>0:
+                p += 1
+                break
+    print("Negatív számok: {}, Pozitív számok: {}".format(n, p))
+
+def feladat_28(n):
+    legn=0
+    for i in range(n+1):
+        if mt.sqrt(i)%1==0:
+            legn=i
+    print(legn," Az n-nél kisebb legnagyobb negyzetszám.")
+
+def feladat_29(n):
+    o=1
+    if n>0 and n<12:
+        for i in range(1,n+1):
+            o=o*i
+        print(o, " n faktoriális eredménye.")
+    else:
+        print(" NEm tudom kiszámolni...")
+
+def feladat_30():
+    datum=input("Írj egy dátumot: ")
+    x=datum.split(".")
+    nap=0
+    for j in range(int(x[1]) - 1):
+        if (int(x[0]) % 4 == 0 and int(x[0]) % 100 != 0) or int(x[0]) % 400 == 0:
+            napok = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            nap += napok[j]
+        else:
+            napok = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            nap += napok[j]
+    print(nap, " nap telt el az évből.")
+
+def feladat_31(n):
+    for i in range(1,n+1):
+        if int(n)%i==0:
+            print(i,end=" ")
+
+def feladat_32(k):
+    n1=int(input("Adj meg egy számot: "))
+    n2 = int(input("Adj még egy nagyobb számot: "))
+    for i in range(n1,n2+1):
+        if i%k==0:
+            print(i, " osztható k-val")
+
+def feladat_33(n):
+    c=0
+    for i in range(1,n+1):
+        a=[]
+
+        for j in range(i):
+            if j==0:
+                continue
+            if i%j==0:
+                a.append(j)
+
+        if c<len(a):
+            c=i
+    print(c," a legtöbb osztóval rendelkező szám.")
+
+
 
 
 def main():
@@ -330,7 +427,7 @@ def main():
     #feladat_8()
     #feladat_9(1,2,4)
     #feladat_10(1996,2018)
-    feladat_11()
+    #feladat_11()
     #feladat_12(61,100)
     #feladat_13()
     #feladat_14()
@@ -340,10 +437,20 @@ def main():
     #feladat_18()
     #print(feladat_19(13))
     #feladat_20(10)
-    #feladat_21(2333212)
+    #feladat_21(233321222)
     #feladat_22(2,10)
     #feladat_23(10000)
     #feladat_24()
     #feladat_25()
+    #feladat_26()
+    #feladat_27()
+    #feladat_28(200)
+    #feladat_29(5)
+    #feladat_30()
+    #feladat_31(100)
+    #feladat_32(7)
+    #feladat_33(19)
+
+
 
 main()
