@@ -142,6 +142,83 @@ def konverzio(n,p,x): #(szám,számrendszer,hatvány)
         print((p**x)*(n%10))
         return konverzio(n//10,p,x) +(p**x)*(n%10)
 
+def fel_10():
+    try:
+        fajl=open("be.txt",mode="r")
+        max=0
+
+        for sor in fajl:
+            db = 0
+            list = sor.split(" ")
+            for szo in list:
+                if szo[0].isupper():
+                    for i in sor:
+                        db += 1
+                    break
+            if max<db:
+                max=db
+        print (max)
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+
+def fel_11():
+    try:
+        fajl=open("be.txt",mode="r")
+        minls=[]
+
+        for sor in fajl:
+            db = 0
+            x=sor.split("\n")
+            for jel in x:
+                if jel[-1] == "?" or jel[-1] == "!" or jel[-1] == ".":
+                    for i in sor:
+                        db += 1
+                    minls.append(db)
+                    print(jel[-1],db)
+                    break
+                break
+        print (min(minls))
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+
+def fel_12():
+    try:
+        fajl=open("be.txt",mode="r")
+        fajlk=open("ki.txt",mode="w")
+        szamok=[]
+        for szam in fajl:
+            szamok=szam.split(",")
+        print(szamok[-1])
+        x=0
+        for l in szamok:
+            x+=1
+        for i in range(x-1):
+            db=0
+            for j in range(i,x):
+                if int(szamok[i])!=int(szamok[j]):
+                    break
+                if int(szamok[i])==int(szamok[j]):
+                    db+=1
+            if db>=int(szamok[-1]):
+                fajlk.write("Tartalmaz")
+                break
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+        fajlk.close
+
+
 def main():
     # print(fel_1(8))
     # fel_2(5)
@@ -152,7 +229,10 @@ def main():
     #fel_7()
     #fel_8(100)
     #fel_9()
-    print(konverzio(1101, 2, -1))
+    #print(konverzio(1101, 2, -1))
+    #fel_10()
+    #fel_11()
+    fel_12()
 
 
 main()
