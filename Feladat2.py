@@ -1,5 +1,5 @@
 from math import *
-
+import sys
 def fel_1(a):
     szam=a
     db=0
@@ -218,7 +218,452 @@ def fel_12():
         fajl.close
         fajlk.close
 
+def fel_13():
+    try:
+        fajl=open("be.txt",mode="r")
+        fajlk=open("ki.txt",mode="w")
+        szamok=[]
+        for szam in fajl:
+            szamok=szam.split(",")
+        print(szamok[-1])
+        x=0
+        for l in szamok:
+            x+=1
+        db = 0
+        for i in range(x-1):
 
+
+
+            if abs(int(szamok[i])-int(szamok[i+1]))>(int(szamok[-1])):
+                db+=1
+
+        fajlk.write("{}".format(db))
+
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+        fajlk.close
+
+def fel_14():
+    try:
+        fajl=open("be.txt",mode="r")
+        fajlk=open("ki.txt",mode="w")
+        sorok=[]
+
+        for x in fajl:
+            x=x.strip()
+            sorok.append(x)
+        for b in sorok:
+            a = ""
+
+            x=0
+            for i in range(int(len(b)/2)):
+
+
+
+                for j in range(int(len(b) / 2)+x,int(len(b))):
+
+                    #print(i, j)
+                    if b[i]!=b[j]:
+                        a=""
+                        i=0
+                        x+=1
+                    if b[i]==b[j]:
+                        a+=(b[j])
+                        x+=1
+                        i+=1
+            print(a)
+            hossz=len(a)
+            fajlk.write("{}\n".format(hossz))
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+        fajlk.close
+
+def fel_15():
+    try:
+        fajl=open("be.txt",mode="r")
+        fajlk=open("ki.txt",mode="w")
+        x=[]
+
+        for sor in fajl:
+            sor=sor.strip()
+            if sor=="":
+                break
+            else:
+                x.append(sor)
+        for i in x:
+            fajlk.write("{}\n".format(i))
+
+
+
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+        fajlk.close
+
+def fel_16():
+    try:
+        fajl=open("be.txt",mode="r")
+        fajlk=open("ki.txt",mode="w")
+        x = []
+
+        for sor in fajl:
+            sor = sor.strip()
+            for i in range(len(sor)):
+
+                if  not sor.isupper():
+                    break
+            else:
+                x.append(sor)
+        for i in x:
+            fajlk.write("{}\n".format(i))
+
+
+
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+        fajlk.close
+
+def fel_17():
+    try:
+        fajl=open("be.txt",mode="r")
+        fajlk=open("ki.txt",mode="w")
+
+        for sor in fajl:
+            sor=sor.strip()
+            szavak=sor.split(" ")
+            for kis in szavak:
+                if kis.islower():
+                    fajlk.write("{}".format(sor))
+                    return
+
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+        fajlk.close
+
+def fel_18():
+    try:
+        fajl=open("be.txt",mode="r")
+        fajlk=open("ki.txt",mode="w")
+        csapat=[]
+        eredmenyek=[0,0]
+        for sor in fajl:
+            sor=sor.strip()
+            szavak=sor.split(" ")
+            felek=szavak[0].split("-")
+            pont=szavak[1].split(":")
+            for i in felek:
+                if i not in csapat:
+                    csapat.append(i)
+
+
+            if felek[0]==csapat[0]:
+                eredmenyek[0] += int(pont[0])
+            if felek[1] == csapat[1]:
+                eredmenyek[1] += int(pont[1])
+            if felek[0] == csapat[1]:
+                eredmenyek[1] += int(pont[0])
+            if felek[1] == csapat[0]:
+                eredmenyek[0] += int(pont[1])
+        if eredmenyek[0]>eredmenyek[1]:
+            fajlk.write("{} nyert".format(csapat[0]))
+        elif eredmenyek[0]<eredmenyek[1]:
+            fajlk.write("{} nyert".format(csapat[1]))
+        else:
+            fajlk.write("{}-{} döntetlen".format(csapat[0],csapat[1]))
+
+
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+        fajlk.close
+
+def fel_19():
+    try:
+        fajl=open("be.txt",mode="r")
+        fajlk=open("ki.txt",mode="w")
+        honlap=[]
+        vendeg=[]
+        for sor in fajl:
+            sor=sor.strip()
+            adatok=sor.split(" ")
+            honlap.append(adatok[0])
+            vendeg.append(adatok[1])
+        hanyas=0
+        max=0
+        for sok in range(len(vendeg)):
+
+            if int(vendeg[sok])>max:
+                max=int(vendeg[sok])
+                hanyas=sok
+        print(max,hanyas)
+        fajlk.write("{} latogattak a legtobben".format(honlap[hanyas]))
+
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+        fajlk.close
+
+def fel_20():
+    try:
+        fajl=open("be.txt",encoding="utf-8",mode="r")
+        fajlk=open("ki.txt",encoding="utf-8",mode="w")
+        varos=[]
+        orszag=[]
+        lakos=[]
+        for sor in fajl:
+            sor=sor.strip()
+            adat=sor.split(";")
+            varos.append(adat[0])
+            orszag.append(adat[1])
+            lakos.append(adat[2])
+        for i in range(len(lakos)):
+            if lakos[i]==max(lakos):
+                fajlk.write("{} lakják a legtöbben".format(varos[i]))
+
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+        fajlk.close
+
+def fel_21():
+    try:
+        fajl = open("be.txt", mode="r")
+        fajlk = open("ki.txt", mode="w")
+        for sor in fajl:
+            adat=sor.split(";")
+            sum=0
+            for i in range(1,len(adat)):
+                sum+=int(adat[i])
+            fajlk.write("{} pontjai: {}\n".format(adat[0],sum))
+
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+        fajlk.close
+
+def fel_22():
+    try:
+        fajl = open("be.txt", mode="r")
+        fajlk = open("ki.txt", mode="w")
+        nev=[]
+        ido=[]
+        for sor in fajl:
+            adat=sor.split(";")
+            nev.append(adat[0])
+            ido.append(adat[2])
+        for i in range(len(ido)):
+            if ido[i] == min(ido):
+                fajlk.write("A leggyorsabb versenyzo, a gyoztes: {}".format(nev[i]))
+
+
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+        fajlk.close
+
+def fel_23():
+    try:
+        fajl = open("be.txt", mode="r")
+        fajlk = open("ki.txt", mode="w")
+        mp=[]
+        cm=[]
+        for sor in fajl:
+            sor=sor.strip()
+            adat=sor.split(" ")
+            mp.append(adat[0])
+            cm.append(adat[1])
+        x=0
+        for i in range(1,len(mp)):
+            print(cm[x],cm[i])
+            if int(cm[x])>int(cm[i]):
+                fajlk.write("NO")
+                print(x)
+                return
+            x+=1
+
+        fajlk.write("YES")
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+        fajlk.close
+
+def fel_24():
+    try:
+        fajl = open("be.txt", mode="r")
+        fajlk = open("ki.txt", mode="w")
+        tcm=0
+        cscm=0
+        sorok=[]
+        for sor in fajl:
+            sor=sor.strip()
+            sorok.append(sor)
+
+        teki=sorok[1].split(" ")
+        csiga=sorok[2].split(" ")
+
+        for cm in teki:
+            tcm+=int(cm)
+        for ccm in csiga:
+            cscm+=int(ccm)
+
+        if tcm>cscm:
+            fajlk.write("{}\nTURTLE".format(2*tcm))
+        elif cscm>tcm:
+            fajlk.write("{}\nSNAIL".format(2*cscm))
+        else:
+            fajlk.write("{}\nDRAW".format(tcm+tcm))
+
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+        fajlk.close
+
+def fel_25():
+    try:
+        fajl = open("be.txt", mode="r")
+        fajlk = open("ki.txt", mode="w")
+        sorok=[]
+        for sor in fajl:
+            sor=sor.strip()
+            sorok.append(sor)
+        A=[]
+        M=[]
+        for i in range(1,int(sorok[0])+1):
+            szo=sorok[i].split(":")
+            A.append(szo[0])
+            M.append(szo[1])
+
+        Adb=0
+        Ax=[]
+        for a in A:
+            if a not in Ax:
+                Adb+=1
+                Ax.append(a)
+        Mx=[]
+        Mdb=0
+        for m in M:
+            if m not in Mx:
+                Mdb+=1
+                Mx.append(m)
+
+        fajlk.write("{}\n{}".format(Adb,Mdb))
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+        fajlk.close
+
+def fel_26():
+    try:
+        fajl1 = open(sys.argv[1], mode="r")
+        fajl2 = open(sys.argv[2], mode="r")
+        fajlk = open("ki.txt", mode="w")
+        sorok1=[]
+        sorok2 = []
+        for sor in fajl1:
+            sor=sor.strip()
+            sorok1.append(sor)
+        for sor in fajl2:
+            sor=sor.strip()
+            sorok2.append(sor)
+        print(sorok1,sorok2)
+        mas=[]
+        for i in sorok1:
+            if i not in sorok2:
+                mas.append(i)
+        dbe=0
+        dbk=0
+        for e in sorok1:
+            dbe+=1
+        for k in sorok2:
+            dbk+=1
+
+        fajlk.write("{} {}\n".format(dbe,dbk))
+        for m in mas:
+            fajlk.write("{}\n".format(m))
+
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl1.close
+        fajl2.close
+        fajlk.close
+
+def fel_27():
+    try:
+        fajl = open(sys.argv[3], mode="r")
+        fajlk = open("ki.txt", mode="w")
+        cim=[]
+        iro=[]
+        db=[]
+        for sor in fajl:
+            sor=sor.strip()
+            adatok=sor.split(":")
+            cim.append(adatok[0])
+            iro.append(adatok[1])
+
+        for x in iro:
+            d = 0
+            idb=x.split(",")
+            for y in idb:
+                d+=1
+            db.append(d)
+
+        for minimum in range(len(db)) :
+            if db[minimum]==min(db):
+                fajlk.write("{}\n".format(cim[minimum]))
+                
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+        fajlk.close
 def main():
     # print(fel_1(8))
     # fel_2(5)
@@ -232,7 +677,20 @@ def main():
     #print(konverzio(1101, 2, -1))
     #fel_10()
     #fel_11()
-    fel_12()
-
-
+    #fel_12()
+    #fel_13()
+    #fel_14()
+    #fel_15()
+    #fel_16()
+    #fel_17()
+    #fel_18()
+    #fel_19()
+    #fel_20()
+    #fel_21()
+    #fel_22()
+    #fel_23()
+    #fel_24()
+    #fel_25()
+    #fel_26()
+    fel_27()
 main()
