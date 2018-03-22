@@ -122,8 +122,34 @@ def fel_9(tomb,n):
                 return 0
     return 1
 
+def oszt_szam(x):
+    db=1
+    for i in range(1,x):
+        if x%i==0:
+            db+=1
+    return db
+
 def fel_10(tomb,k):
-    
+    pt=[]
+    for i in range(len(tomb)-1):
+        for j in range(i+1,len(tomb)):
+            if oszt_szam(tomb[i])>oszt_szam(tomb[j]):
+                tmp=tomb[i]
+                tomb[i]=tomb[j]
+                tomb[j]=tmp
+    #for j in tomb:
+    #    pt.append(oszt_szam(j))
+    #print (pt)
+    #print(tomb)'''
+    ah=0
+    fh=len(tomb)-1
+    while ah<=fh:
+        x=(ah+fh)//2
+        if oszt_szam(tomb[x])>k:
+            return x
+        else:
+            ah=x+1
+    return -1
 
 def main():
     #fel_1()
@@ -136,7 +162,9 @@ def main():
     double=np.array([1,2,3,4,5,6,6,7,8,9])
     #print(fel_8(double,10))
     rel=np.array([2,3,5,8,11,13,17,19])
-    print(fel_9(rel,8))
+    #print(fel_9(rel,8))
+    nt=np.array([5,34,2,32,4,3,14,6,16,23,10])
+    print(fel_10(nt,5))
 
 
 main()
