@@ -151,6 +151,86 @@ def fel_10(tomb,k):
             ah=x+1
     return -1
 
+def fel_11():
+    n=int(input("matrix sorai száma: "))
+    m=int(input("matrix oszlopai száma: "))
+    matrix=np.zeros((n,m),dtype='int')
+    for i in range(n):
+        for j in range(m):
+            x=int(input("Mátrix egyik eleme: "))
+            matrix[i][j]=x
+    #print (matrix)
+    for j in range(m):
+        neg = 0
+        nul = 0
+        for i in range(n):
+            if matrix[i][j]<0:
+                neg+=1
+            if matrix[i][j]==0:
+                nul+=1
+        if neg/2>=nul:
+            print(j,". oszlopba legalább 2x annyi negativ szám van mint nulla")
+
+def fel_12(matrix,m,n):
+    for i in range(m):
+        for j in range(n):
+            if i+j!=0 and matrix[i][j]%(i+j)==0 :
+                print ("{} érték, matrix[{}][{}] helyen".format(matrix[i][j],i,j))
+    #print(matrix)
+
+def fel_13(matrix,m,n):
+    tomb=np.zeros((m,n))
+
+    for j in range(n):
+        kicsi = matrix[0][j]
+        for i in range(m):
+            if matrix[i][j]<kicsi:
+                kicsi=matrix[i][j]
+        for i in range(m):
+            tomb[i][j]=matrix[i][j]-kicsi
+    print(matrix)
+    print (tomb)
+
+def fel_14(tomb,n):
+    nagy=tomb[n-1][n-1]
+    for i in range(n):
+        for j in range(n):
+            if i+j>n-1:
+                if tomb[i][j]>nagy:
+                    nagy=tomb[i][j]
+    print(nagy)
+
+def fel_15(matrix,n):
+    for i in range(n):
+        for j in range(n):
+            if i==j:
+                if matrix[i][j]!=0:
+                    return False
+    return True
+
+def fel_16(t1,t2,m,n):
+    for i in range(m):
+        for j in range(n):
+            t2[j][i]=t1[i][j]
+    print(t1,"\n\n",t2)
+
+def ASCIIszamj6(n,m):
+    hat = np.zeros((n, m))
+    for i in range(n):
+        for j in range(m):
+            if i == 0 or i == n - 1 or i == n // 2:
+                hat[i][j] = 42
+            else:
+                hat[i][j] = 32
+        hat[i][0] = 42
+        if i > n // 2:
+            hat[i][m - 1] = 42
+
+    for i in range(n):
+        for j in range(m):
+            print(chr(int(hat[i][j])), end=' ')
+        print('\n')
+
 def main():
     #fel_1()
     #fel_2()
@@ -159,12 +239,37 @@ def main():
     #fel_5()
     #fel_6()
     #fel_7()
-    double=np.array([1,2,3,4,5,6,6,7,8,9])
-    #print(fel_8(double,10))
+    dou=np.array([1,2,3,4,5,6,6,7,8,9],dtype='double')
+    #print(fel_8(dou,10))
     rel=np.array([2,3,5,8,11,13,17,19])
     #print(fel_9(rel,8))
     nt=np.array([5,34,2,32,4,3,14,6,16,23,10])
-    print(fel_10(nt,5))
+    #print(fel_10(nt,5))
+    #fel_11()
+    ma=np.array([[2,1,2,3],[2,2,3,5],[3,3,7,8],[1,3,2,1],[6,4,2,1]])
+    #fel_12(ma,5,4)
+    #fel_13(ma,5,4)
+    tm=np.array([[1,9,4,12],[23,25,28,12],[13,35,38,73],[46,49,94,45]])
+    #fel_14(tm,4)
+    fonul=np.array([[0,9,4,62],[3,0,28,12],[13,3,0,7],[6,42,4,0]])
+    #print(fel_15(fonul,4))
 
+    mszern=np.array([[0,9,10,4,62],[3,30,0,28,12],[13,3,0,19,7],[50,6,42,4,0]],dtype='double')
+    nszerm=np.zeros((5,4),dtype='double')
+    #fel_16(mszern,nszerm,4,5)
+    esetek = int(input())
+    t=np.zeros(2*esetek,dtype='int')
+    '''
+    for i in range(0,2*esetek,2):
+       sor=input()
+       sor=sor.strip()
+       sor=sor.split()
+       t[i]=int(sor[0])
+       t[i+1]=int(sor[1])
+    print(t)
+    for i in range(0,2*esetek,2):
+       ASCIIszamj6(t[i],t[i+1])
+    '''
+    
 
 main()
