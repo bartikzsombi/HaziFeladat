@@ -64,13 +64,12 @@ def fel_5():
     print("7nél kisseb szamok szorzata: {}, 10 nél nagyobbak összege: {}".format(szorzat,osszeg))
 
 def fel_6():
-    n = int(input("Darab számot kérek: "))
+    i=0
+    y=1
     x=0
     z=0
-    for i in range(n):
+    while y!=0:
         y = int(input("szam: "))
-        if y==0:
-            break
         if i>1:
             if x+z==y:
                 print (y)
@@ -78,14 +77,15 @@ def fel_6():
             x=y
         if i%2==1:
             z=y
+        i+=1
 
 def fel_7():
-    n = int(input("Darab számot kérek: "))
+    y = 1
     t=[]
-    for i in range(n):
+    n=0
+    while y!=0:
         y = int(input("szam: "))
-        if y==0:
-            break
+        n+=1
         t.append(y)
 
     max=0
@@ -231,6 +231,44 @@ def ASCIIszamj6(n,m):
             print(chr(int(hat[i][j])), end=' ')
         print('\n')
 
+def tankol():
+    try:
+        fajl=open("tankolas.txt",mode='r')
+        rendszam=[]
+
+        for sor in fajl:
+            sor=sor.strip().split("/")
+            rendszamsor=[]
+            rendszamsor.append(sor[0])
+            rendszamsor.append(sor[1])
+            rendszam.append((rendszamsor))
+            #print(rendszamsor)
+            d = 0
+            for i in rendszamsor[1]:
+
+                if i=="1":
+                    d+=1
+            rendszamsor.append(d)
+        rendszam=sorted(rendszam)
+
+        i=12
+        while i>3:
+            for c in range(len(rendszam)):
+                if rendszam[c][2]==i:
+                    print(rendszam[c])
+            i-=1
+
+        #print(rendszam)
+
+
+    except FileExistsError:
+        print("nem létezik a fájl")
+    except Exception as e:
+        print("Valami van", e)
+    finally:
+        fajl.close
+
+
 def main():
     #fel_1()
     #fel_2()
@@ -257,8 +295,8 @@ def main():
     mszern=np.array([[0,9,10,4,62],[3,30,0,28,12],[13,3,0,19,7],[50,6,42,4,0]],dtype='double')
     nszerm=np.zeros((5,4),dtype='double')
     #fel_16(mszern,nszerm,4,5)
-    esetek = int(input())
-    t=np.zeros(2*esetek,dtype='int')
+    #esetek = int(input())
+    #t=np.zeros(2*esetek,dtype='int')
     '''
     for i in range(0,2*esetek,2):
        sor=input()
@@ -270,6 +308,6 @@ def main():
     for i in range(0,2*esetek,2):
        ASCIIszamj6(t[i],t[i+1])
     '''
-    
+    tankol()
 
 main()
