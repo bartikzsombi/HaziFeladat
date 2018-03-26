@@ -268,6 +268,21 @@ def tankol():
     finally:
         fajl.close
 
+def MGHvParatlan():
+    abc=np.array(['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'],dtype='str')
+    print("Passz, nem igazán értem a feladatot :/ ")
+
+def bevasarlas():
+    x=0
+    blokk=[]
+    while x!='END':
+        x=str(input())
+        if x != 'END':
+            blokk.append(x)
+    sum=0
+    for i in range(len(blokk)):
+        sum+=float(blokk[i])
+    print ("%.2f"%sum)
 
 def main():
     #fel_1()
@@ -308,6 +323,8 @@ def main():
     for i in range(0,2*esetek,2):
        ASCIIszamj6(t[i],t[i+1])
     '''
-    tankol()
+    #tankol()
+    #MGHvParatlan()
+    bevasarlas()
 
 main()
